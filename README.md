@@ -17,7 +17,7 @@ alias plot='python "$home"/github/SymPyVolume/plot.py'
 You're all set. Checkout the help page for more information
 
 
-## [Examples]()
+## [Examples](https://nbviewer.jupyter.org/github/robraddi/SymPyVolume/blob/master/examples.ipynb)
 
 
 ### Usage:
