@@ -100,12 +100,18 @@ class Plot(object):
         #embed.embed_html("%s.html"%outPath, hbox, offline=True, devmode=False)
 
 
-    def plot_data(self, data, outPath="3-D_figure", inline=False):
+    def plot_data(self, data, outPath="3-D_figure", marker='sphere',size=2,inline=False):
 
+
+        ipv.figure(width=400, height=500, lighting=True, controls=True)
         #x,y,z = data[0],data[1],data[2]
         #TODO: marker control
-        s = ipv.scatter(data[0], data[1], data[2], marker='sphere')#, size=10)
-        ipv.figure(width=400, height=500, lighting=True, controls=True)
+        ipv.quickscatter(data[0], data[1], data[2], marker=marker, size=size)#, size=10)
+        #ipv.plot_surface(data[0], data[1], data[2], color="orange")
+        #ipv.plot_wireframe(data[0], data[1], data[2], color="red")
+
+        ipv.pylab.xlim(self.xlim[0],self.xlim[1])
+        ipv.pylab.ylim(self.ylim[0],self.ylim[1])
         if self.zlim != [None,None]:
             ipv.pylab.zlim(self.zlim[0],self.zlim[1])
         ipv.style.use(['seaborn-darkgrid', {'axes.x.color':'orange'}])
