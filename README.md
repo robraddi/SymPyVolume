@@ -34,7 +34,13 @@ optional arguments:
   --data DATA           input data file
 ```
 
-
+### Requirements (most recent versions):
+```bash
+scipy
+sympy
+ipyvolume
+ipywidgets
+```
 
 ------------------
 
