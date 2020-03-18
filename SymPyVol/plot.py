@@ -202,18 +202,18 @@ if __name__=="__main__":
         lim = z.replace("[","").replace("]","")
         m.zlim = [float(lim.split(",")[0]),float(lim.split(",")[1])]
 
-    # Is there a directory for trash? If not, create it.
-    trash = str(os.path.expanduser('~')+'/.trash')
-    if not os.path.isdir('%s'%(trash)):
-        run_cmd('mkdir %s'%(trash))
+    # Is there a directory for spv? If not, create it.
+    spv = str(os.path.expanduser('~')+'/.spv')
+    if not os.path.isdir('%s'%(spv)):
+        run_cmd('mkdir %s'%(spv))
 
     if Fn:
         # Change the name for the output using markdown conventions
         name = str(Fn).replace('**','^').replace('/','Frac').replace('*','dot').replace('(','{').replace(')','}').replace(',','¿').replace(";","_and_")
-        outPath = str(trash)+str('/')+str(name)
+        outPath = str(spv)+str('/')+str(name)
         debug=0 #1
         if debug:
-            print('trash = %s'%trash)
+            print('spv = %s'%spv)
             print('Fn = %s'%Fn)
             print('name = %s'%name)
             print('outPath = %s'%outPath)
