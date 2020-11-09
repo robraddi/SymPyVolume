@@ -14,7 +14,10 @@ for i in range(len(ind)):
     s2.append(int(ind[i][1][0]))
 s1 = np.array(s1,dtype=int)
 s2 = np.array(s2,dtype=int)
-data = np.matrix([s1, s2, energies])
+
+burnin = 1000
+data = np.matrix([s1[burnin:], s2[burnin:], energies[burnin:]])
+
 
 p = spv.Plot(axis_labels=["sigma1","sigma2","energy"],
         xlim=[np.min(data[0]),np.max(data[0])],
