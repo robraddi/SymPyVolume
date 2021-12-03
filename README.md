@@ -42,6 +42,11 @@ ipyvolume
 ipywidgets
 ```
 
+### Other usage (for matplotlib interactivity):
+
+![](images/mpl_interactivity.png)
+
+
 ------------------
 
 
