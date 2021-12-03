@@ -15,6 +15,18 @@ def make_interactive(fig, axes):
     render an interactive plot.
     NOTE: Can only be used in Jupyter notebooks and Jupyter lab. Also, must
     have `%matplotlib widget` at the top of cell in Jupyter Notebook.
+
+    Useage (in Jupyter cell):
+        %matplotlib widget
+        fig = plt.figure(figsize=(12, 4))
+        gs = gridspec.GridSpec(1, 2)
+        ax1 = plt.subplot(gs[0,0])
+        ax2 = plt.subplot(gs[0,1])
+        df1.plot(ax=ax1, label="Label 1")
+        df2.plot(ax=ax2, label="Label 2")
+        axes = [ax1,ax2]
+        make_interactive(fig, axes)
+
     """
 
     pickables = {}
