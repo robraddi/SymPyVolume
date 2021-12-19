@@ -226,16 +226,16 @@ if __name__=="__main__":
     This program can be used as a quick visual aid via:
     (1) symbolic expressions (python syntax for input)
         # standard function call
-        $ spp -Fn "sin(x)*cos(y)"
+        $ plot -Fn "sin(x)*cos(y)"
 
         # multiple functions overlaid separated by semicolon
-        $ spp -Fn "x+y;4*x-y;-x+2*y"
+        $ plot -Fn "x+y;4*x-y;-x+2*y"
 
         # limits
-        $ spp -Fn "sin(x)*cos(y)" -xlim [0,50] -ylim [0,25] -zlim [-10,50]
+        $ plot -Fn "sin(x)*cos(y)" -xlim [0,50] -ylim [0,25] -zlim [-10,50]
 
     (2) input data from file
-        $ spp -f data.dat
+        $ plot -f data.dat
 
     Friendly
     Please remember to use variables x,y,z.

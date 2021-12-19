@@ -13098,16 +13098,16 @@ SymPyPlot
 This program can be used as a quick visual aid via:
 (1) symbolic expressions (python syntax for input)
     # standard function call
-    $ spp -Fn "sin(x)*cos(y)"
+    $ plot -Fn "sin(x)*cos(y)"
 
     # multiple functions overlaid separated by semicolon
-    $ spp -Fn "x+y;4*x-y;-x+2*y"
+    $ plot -Fn "x+y;4*x-y;-x+2*y"
 
     # limits
-    $ spp -Fn "sin(x)*cos(y)" -xlim [0,50] -ylim [0,25] -zlim [-10,50]
+    $ plot -Fn "sin(x)*cos(y)" -xlim [0,50] -ylim [0,25] -zlim [-10,50]
 
 (2) input data from file
-    $ spp -f data.dat
+    $ plot -f data.dat
 
 Friendly
 Please remember to use variables x,y,z.
@@ -13139,7 +13139,7 @@ optional arguments:
 <iframe src="images/4dotpidotx^{2}dot{.001Frac{2dotpidoty}}^{3Frac2}dotexp{-.001dotx^{2}Frac{2doty}}.html" width="500" height="500" align="center"></iframe><p><!-- language: bash -->
 <code>plot --Fn "1/sqrt(x**2+y**2)"</code></p>
 <iframe src="images/inverse_xsquared_ysquared.html" width="500" height="500" align="center"></iframe><h3>Here's a pretty flower (RR 12/18/21)</h3><p><code>
-plot --Fn "exp((y-x)**0.5);exp((-y+x)**0.5);exp((-y-x)**0.5);exp((y+x)**0.5);x**2+y**2;20-1/(x*y)**2" --z "[-100,100]" --color "pink" --box_off True --axes_off True
+plot --Fn "exp((y-x)**0.5);exp((-y+x)**0.5);exp((-y-x)**0.5);exp((y+x)**0.5);(x**2+y**2)-20;20-1/(x*y)**2" --z "[-100,100]" --color "pink" --box_off True --axes_off True
 </code></p>
 <iframe src="images/flower.html" width="500" height="500" align="center"></iframe>
 </div>
