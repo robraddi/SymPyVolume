@@ -45,7 +45,68 @@ class Plot(object):
         self.xlim,self.ylim,self.zlim = xlim,ylim,zlim
         integrate = sp.integrate
 
-    def plot_expr(self, Fn, outPath):
+#    def plot_expr(self, Fn, outPath):
+#
+#        ipv.figure(width=500, height=500, lighting=True, controls=True)
+#        Fns = [i for i in Fn.split(";")]
+#        for Fn in Fns:
+#            f = parse_expr(Fn)
+#            f_ = f.as_expr()
+#            latex = sp.latex(f)
+#            # Generate combinations of x,y,z and pick the correct variables given
+#            #.. the user input.
+#            _symbols = sp.symbols('x,y,z')
+#            for var1,var2 in combinations(_symbols,2):
+#                func = lambdify([_symbols[0],_symbols[1]], f_, modules=['numpy', 'scipy',
+#                    {'erf': scipy.special.erf}])
+#                if (str(var1) and str(var2)) in Fn:
+#                    func = lambdify([var1,var2], f_, modules=['numpy', 'scipy',
+#                        {'erf': scipy.special.erf}])
+#                    break
+#            X,Y = np.linspace(self.xlim[0], self.xlim[1]),np.linspace(self.ylim[0], self.ylim[1])
+#            xplot,yplot = np.meshgrid(X,Y)
+#
+#            #zplot1 = float(100/n)*func(xplot, yplot) # 100/n is a normalization const.
+#            zplot1 = func(xplot, yplot) # 100/n is a normalization const.
+#
+#            # only x is a sequence of arrays
+#            x,y,z = xplot, yplot, zplot1
+#            #TODO: marker control
+#            #s = ipv.scatter(x, y, z, marker='sphere', size=10)
+#            #p3.clear()
+#            #ipv.pylab.volshow(np.array([x,y,z]), lighting=False, data_min=None,
+#            #    data_max=None, max_shape=256, tf=None, stereo=False,
+#            #    ambient_coefficient=0.5, diffuse_coefficient=0.8,
+#            #    specular_coefficient=0.5, specular_exponent=5, downscale=1,
+#            #    level=[0.1, 0.5, 0.9], opacity=[0.01, 0.05, 0.1], level_width=0.1,
+#            #    controls=True, max_opacity=0.2, memorder='C', extent=None)
+#            ipv.plot_surface(x,y,z, color="pink")
+#            ipv.plot_wireframe(x,y,z, color="red")
+#            del X,Y,xplot,yplot,zplot1
+#
+#        ipv.pylab.xlim(self.xlim[0],self.xlim[1])
+#        ipv.pylab.ylim(self.ylim[0],self.ylim[1])
+#        if self.zlim != [None,None]:
+#            ipv.pylab.zlim(self.zlim[0],self.zlim[1])
+#        else:
+#            ipv.pylab.zlim(self.ylim[0],self.ylim[1])
+#        #ipv.style.use(['seaborn-darkgrid', {'axes.x.color':'white','axes.y.color':'white','axes.z.color':'white'}])
+#        ipv.style.box_off()
+#        ipv.style.axes_off()
+#        ipv.pylab.view(azimuth=-45, elevation=25, distance=4)
+#        ipv.pylab.xyzlabel(labelx=self.axis_labels[0],
+#                labely=self.axis_labels[1],labelz=self.axis_labels[2])
+#        ipv.pylab.save("%s.html"%outPath,title=r"%s"%(latex), offline=True,
+#                template_options=(('extra_script_head', ''),
+#                    ('body_pre', ''), ('body_post', '')))
+#        #ipv.xyzlim(self.xlim, ylim)
+#        #hbox = p3.current.container#VBox([p3.current.container, ipv.figure()])
+#        #embed.embed_html("%s.html"%outPath, hbox, offline=True, devmode=False)
+
+
+
+    def plot_expr(self, Fn, outPath, color="orange", box_off=False, axes_off=False,
+            offline=False):
 
         ipv.figure(width=500, height=500, lighting=True, controls=True)
         Fns = [i for i in Fn.split(";")]
@@ -80,7 +141,7 @@ class Plot(object):
             #    specular_coefficient=0.5, specular_exponent=5, downscale=1,
             #    level=[0.1, 0.5, 0.9], opacity=[0.01, 0.05, 0.1], level_width=0.1,
             #    controls=True, max_opacity=0.2, memorder='C', extent=None)
-            ipv.plot_surface(x,y,z, color="orange")
+            ipv.plot_surface(x,y,z, color=color)
             ipv.plot_wireframe(x,y,z, color="red")
             del X,Y,xplot,yplot,zplot1
 
@@ -91,10 +152,14 @@ class Plot(object):
         else:
             ipv.pylab.zlim(self.ylim[0],self.ylim[1])
         ipv.style.use(['seaborn-darkgrid', {'axes.x.color':'orange'}])
-        ipv.pylab.view(azimuth=-45, elevation=25, distance=4)
+        if box_off: ipv.style.box_off()
+        if axes_off: ipv.style.axes_off()
+
+        #ipv.pylab.view(azimuth=-45, elevation=25, distance=4)
+        ipv.pylab.view(azimuth=85, elevation=25, distance=5)
         ipv.pylab.xyzlabel(labelx=self.axis_labels[0],
                 labely=self.axis_labels[1],labelz=self.axis_labels[2])
-        ipv.pylab.save("%s.html"%outPath,title=r"%s"%(latex), offline=None,
+        ipv.pylab.save("%s.html"%outPath,title=r"%s"%(latex), offline=offline,
                 template_options=(('extra_script_head', ''),
                     ('body_pre', ''), ('body_post', '')))
         #ipv.xyzlim(self.xlim, ylim)
@@ -157,9 +222,22 @@ if __name__=="__main__":
                     formatter_class=argparse.RawDescriptionHelpFormatter,
                             description=textwrap.dedent('''\
     -------------------------------------------------------------------------------
-    This program allows the user to input various mathematical functions and recive
-    a 3-D plot (similar to Wolfram Alpha).
+    SymPyPlot
+    This program can be used as a quick visual aid via:
+    (1) symbolic expressions (python syntax for input)
+        # standard function call
+        $ spp -Fn "sin(x)*cos(y)"
 
+        # multiple functions overlaid separated by semicolon
+        $ spp -Fn "x+y;4*x-y;-x+2*y"
+
+        # limits
+        $ spp -Fn "sin(x)*cos(y)" -xlim [0,50] -ylim [0,25] -zlim [-10,50]
+
+    (2) input data from file
+        $ spp -f data.dat
+
+    Friendly
     Please remember to use variables x,y,z.
     -------------------------------------------------------------------------------
                                     '''),
@@ -177,6 +255,16 @@ if __name__=="__main__":
             default=str("[x,y,z]"),metavar=None,required=False)
     parser.add_argument("--data", help="input data file",type=str,
             default=None,metavar=None,required=False)
+    parser.add_argument("--color", help="color of surface",type=str,
+            default="orange",metavar=None,required=False)
+    parser.add_argument("--axes_off", help="turn off the axis labels",type=bool,
+            default=False,metavar=None,required=False)
+    parser.add_argument("--box_off", help="show the 3-D box image",type=bool,
+            default=False,metavar=None,required=False)
+    parser.add_argument("--offline", help="use offline",type=bool,
+            default=False,metavar=None,required=False)
+
+
     #parser.add_argument("--", help="",type=str,
     #        default=None,metavar=None,required=False)
 
@@ -189,6 +277,8 @@ if __name__=="__main__":
     labels = str(args.axis_labels).replace("[","").replace("]","")
     m.axis_labels = [ str(i) for i in labels.split(",")]
     data = args.data
+    color, box_off, axes_off = str(args.color), bool(args.box_off), bool(args.axes_off)
+    offline = args.offline
     #:}}}
 
     # Check the x-axis limits
@@ -217,11 +307,11 @@ if __name__=="__main__":
             print('Fn = %s'%Fn)
             print('name = %s'%name)
             print('outPath = %s'%outPath)
-        m.plot_expr(Fn,outPath)
+        m.plot_expr(Fn,outPath,color,box_off,axes_off,offline)
         run_cmd('open %s.html'%(str(outPath)))
 
     if data:
-        m.plot_expr(Fn,outPath)
+        m.plot_expr(Fn,outPath,color,box_off,axes_off)
         run_cmd('open %s.html'%(str(outPath)))
 
 
