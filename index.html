@@ -13017,136 +13017,6 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
-<style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
-    </style>
-<style type="text/css">
-    <style>
-    @font-face {
-        font-family: "Computer Modern";
-        src: url('http://mirrors.ctan.org/fonts/cm-unicode/fonts/otf/cmunss.otf');
-    }
-    #notebook { /* centers the page content */
-    padding-left:8%;
-    padding-right:9%;
-    }
-    #ipython-main-app {
-        position: relative;
-    }
-    #jupyter-main-app {
-        position: relative;
-    }
-    div.cell{
-        width:98%;
-        margin-left:4% !important;*/
-        margin-right:4%;
-    }
-    h1 {
-        font-family: "Charis SIL", Palatino, serif;
-        text-align: center;
-    }
-    h4{
-        margin-top:12px;
-        margin-bottom: 3px;
-       }
-    div.text_cell_render{
-        font-family: Computer Modern, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-        line-height: 145%;
-        font-size: 12pt;
-        width:99%;
-        margin-left:auto;
-        margin-right:auto;
-    }
-    .output_png {
-        display: block;/*table-cell;*/
-        text-align: center;
-        align: center;
-        vertical-align: middle;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
-    div.output_area pre {font-weight: normal; text-align: justify; }
-    .warning{
-        color: rgb( 240, 20, 20 )
-        }
-    .CodeMirror{
-            font-family: "Source Code Pro", source-code-pro,Consolas, monospace;
-    }
-    .prompt{
-        display: None;
-    }
-    .text_cell_render h5 {
-        font-weight: 300;
-        font-size: 16pt;
-        color: #4057A1;
-        font-style: italic;
-        margin-bottom: .5em;
-        margin-top: 0.5em;
-        display: block;
-    }
-    .footer{
-    text-align: center;
-    font-family: arial, helvetica;
-    font-size: 11px;
-    }
-
-</style>
-<!-- MathJax configuration -->
-<script type="text/x-mathjax-config">
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    MathJax.Hub.Config({
-                        TeX: {
-                           extensions: ["AMSmath.js"]
-                           },
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-                },
-                displayAlign: 'center', // Change this to 'center' to center equations.
-                "HTML-CSS": {
-                    styles: {'.MathJax_Display': {"margin": 4}},
-                    linebreaks: { automatic: true }}
-        });
-</script>
-
-    </style>
 
 
 <style type="text/css">
@@ -13180,7 +13050,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13217,18 +13087,45 @@ div#notebook {
     <li style="list-style-type: none;font-weight: normal;"><b>2.</b> Create an alias in bashrc for the plot.py script:</li>
 </ul><p><!-- language: bash -->
 <code>alias plot="python "$home"/github/SymPyVolume/plot.py'</code></p>
-<p>You're all set. Checkout the help page for more information</p><h3>Usage:</h3><p><!-- language: bash -->
-<code style="language: bash;">
+<p>You're all set. Checkout the help page for more information</p><p><!-- language: bash --></p>
+
+<pre><code>usage: 3-D Plot [-h] [--Fn &lt;class 'str'&gt;] [--x X] [--y Y] [--z Z]
+                [--axis-labels AXIS_LABELS] [--data DATA] [--color COLOR]
+                [--axes_off AXES_OFF] [--box_off BOX_OFF] [--offline OFFLINE]
+
+-------------------------------------------------------------------------------
+SymPyPlot
+This program can be used as a quick visual aid via:
+(1) symbolic expressions (python syntax for input)
+    # standard function call
+    $ spp -Fn "sin(x)*cos(y)"
+
+    # multiple functions overlaid separated by semicolon
+    $ spp -Fn "x+y;4*x-y;-x+2*y"
+
+    # limits
+    $ spp -Fn "sin(x)*cos(y)" -xlim [0,50] -ylim [0,25] -zlim [-10,50]
+
+(2) input data from file
+    $ spp -f data.dat
+
+Friendly
+Please remember to use variables x,y,z.
+-------------------------------------------------------------------------------
+
 optional arguments:
   -h, --help            show this help message and exit
-  --Fn <class 'str'>    Function with variables x,y,z
+  --Fn &lt;class 'str'&gt;    Function with variables x,y,z
   --x X                 x-axis limits
   --y Y                 y-axis limits
   --z Z                 z-axis limits
   --axis-labels AXIS_LABELS
                         axis labels for plot
   --data DATA           input data file
-</code></p>
+  --color COLOR         color of surface
+  --axes_off AXES_OFF   turn off the axis labels
+  --box_off BOX_OFF     show the 3-D box image
+  --offline OFFLINE     use offline</code></pre>
 <hr>
 
 <h1>Examples:</h1><p>Let's start with something basic:</p><p>Here's a very simple plot of $x/y$, where $0 < x < 10$, and where $0 < y < 10$</p><p><!-- language: bash -->
@@ -13241,7 +13138,10 @@ optional arguments:
 <code>plot --Fn "4*pi*x**(2)*(.001/(2*pi*y))**(3/2)*exp(-.001*x**(2)/(2*y))" --axis-labels "\nu(m/s),T(K),F(\nu)(s/m)" --x "[0,1000]" --y "[0,1000]" --z "[0,0.0095]"</code></p>
 <iframe src="images/4dotpidotx^{2}dot{.001Frac{2dotpidoty}}^{3Frac2}dotexp{-.001dotx^{2}Frac{2doty}}.html" width="500" height="500" align="center"></iframe><p><!-- language: bash -->
 <code>plot --Fn "1/sqrt(x**2+y**2)"</code></p>
-<iframe src="images/inverse_xsquared_ysquared.html" width="500" height="500" align="center"></iframe>
+<iframe src="images/inverse_xsquared_ysquared.html" width="500" height="500" align="center"></iframe><h3>Here's a pretty flower (RR 12/18/21)</h3><p><code>
+plot --Fn "exp((y-x)**0.5);exp((-y+x)**0.5);exp((-y-x)**0.5);exp((y+x)**0.5);x**2+y**2;20-1/(x*y)**2" --z "[-100,100]" --color "pink" --box_off True --axes_off True
+</code></p>
+<iframe src="images/flower.html" width="500" height="500" align="center"></iframe>
 </div>
 </div>
 </div>
